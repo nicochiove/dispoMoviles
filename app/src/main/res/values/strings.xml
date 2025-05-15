@@ -43,4 +43,7 @@
     <string name="surname_pagar">Apellido</string>
     <string name="dni_pagar">DNI</string>
 
+    <!--Text-->
+    <string name="data_loaded">DATOS CARGADOS</string>
+
 </resources>
