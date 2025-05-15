@@ -43,4 +43,6 @@
     <string name="button_vencimientos_dia">Vencimientos del Día</string>
     <string name="button_deudores">Deudores</string>
     <string name="button_main_menu">Menú Principal</string>
+    <string name="close">Boton para cerrar pestaña</string>
+
 </resources>
