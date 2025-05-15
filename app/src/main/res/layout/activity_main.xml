@@ -1,0 +1,143 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/degradado_fondo"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main"
+        android:paddingBottom="16dp"> <!-- Añadido paddingBottom para evitar que el contenido quede recortado en pantallas pequeñas -->
+
+        <ImageView
+            android:id="@+id/imgHeader"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/family_photo"
+            android:src="@drawable/family_gym"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.40" /> <!-- Ajustado el height para que ocupe un 40% -->
+
+        <TextView
+            android:id="@+id/txtBienvenida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli"
+            android:text="@string/textView2"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/imgHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:id="@+id/txtSlogan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textView5"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/noticia_text"
+            app:layout_constraintTop_toBottomOf="@id/txtBienvenida"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/lblUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli"
+            android:text="@string/textView7"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/txtSlogan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/edtUsuario"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/edittext_rounded"
+            android:hint="@string/User"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#CCCCCC"
+            android:autofillHints="username"
+            app:layout_constraintTop_toBottomOf="@id/lblUsuario"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/lblPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli"
+            android:text="@string/textView8"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/edtUsuario"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp"/>
+
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/edittext_rounded"
+            android:hint="@string/editTextPassword"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#CCCCCC"
+            android:autofillHints="password"
+            app:layout_constraintTop_toBottomOf="@id/lblPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#FF8000"
+        android:text="@string/button"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtPassword"
+        app:layout_constraintWidth_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+
