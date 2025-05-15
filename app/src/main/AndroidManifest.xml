@@ -13,14 +13,13 @@
         android:theme="@style/Theme.App_Club_Vanguardista"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".MainMenu"
             android:exported="false" />
         <activity
             android:name=".ListasMenu"
-=======
+            android:exported="false"/>
+        <activity
             android:name=".SocioEncontradoActivity"
->>>>>>> a981506 (Guardando cambios antes de cambiar de rama)
             android:exported="false" />
         <activity
             android:name=".BuscarSocio"
