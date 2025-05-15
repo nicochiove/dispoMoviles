@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/degradado_fondo"
     tools:context=".MainActivity"
+    android:id="@+id/main"
     android:padding="16dp">
 
 
