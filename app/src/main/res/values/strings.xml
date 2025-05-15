@@ -9,5 +9,13 @@
     <string name="editTextPassword">Ingrese contraseña</string>
     <string name="button">Iniciar sesión</string>
     <string name="desc_button_iniciar_sesion">Botón para iniciar sesión</string>
-
+    <string name="btnLogin2">Buscar</string>
+    <string name="desc_button_buscar">Botón para iniciar sesión</string>
+    <string name="logo">Logo de la institución</string>
+    <string name="name_buscar">Ingrese nombre</string>
+    <string name="surname_buscar">Ingrese apellido</string>
+    <string name="dni_buscar">Ingrese dni</string>
+    <string name="lbl_name_buscar">Nombre</string>
+    <string name="lbl_surname_buscar">Apellido</string>
+    <string name="lbl_dni_buscar">DNI</string>
 </resources>
