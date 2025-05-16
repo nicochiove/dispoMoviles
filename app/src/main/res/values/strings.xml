@@ -43,6 +43,7 @@
     <string name="button_deudores">Deudores</string>
     <string name="button_main_menu">Menú Principal</string>
     <string name="close">Boton para cerrar pestaña</string>
+    <string name="btnBuscar">Buscar</string>
     <string name="button_impr_carnet">Generar Carnet</string>
     <string name="button_buscar">Buscar</string>
 
@@ -57,6 +58,8 @@
         <item>6</item>
         <item>12</item>
     </string-array>
+
+
 
 
     <!--Text-->
