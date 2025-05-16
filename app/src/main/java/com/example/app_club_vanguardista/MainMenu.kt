@@ -34,5 +34,10 @@ class MainMenu : AppCompatActivity() {
             val intent = Intent(this, BuscarSocio::class.java)
             startActivity(intent)
         }
+        val btnListas = findViewById<Button>(R.id.btnVenc)
+        btnListas.setOnClickListener {
+            val intent = Intent(this, ListasMenu::class.java)
+            startActivity(intent)
+        }
     }
 }
