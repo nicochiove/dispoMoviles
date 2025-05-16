@@ -145,9 +145,8 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="130dp"
-        android:layout_height="139dp"
-        android:contentDescription="@string/family_photo"
+        style="@style/logo_style"
+        android:contentDescription="@string/logo"
         android:scaleType="centerCrop"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +161,7 @@
         android:layout_height="142dp"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
-        android:contentDescription="Foto del socio"
+        android:contentDescription="@string/foto_socio"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"

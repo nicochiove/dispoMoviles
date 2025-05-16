@@ -38,7 +38,8 @@
     <string name="button_alta">Alta de Socio</string>
     <string name="button_vencimientos">Listas de Vencimientos</string>
     <string name="button_pagos">Pagos</string>
-    <string name="button_salir">Salir del Sistema</string>
+    <string name="button_salir">Salir del sistema</string>
+    <string name="button_volver_menu_principal">Volver al menu principal</string>
     <string name="button_vencimientos_dia">Vencimientos del Día</string>
     <string name="button_deudores">Deudores</string>
     <string name="button_main_menu">Menú Principal</string>
@@ -65,7 +66,7 @@
     <!--Text-->
     <string name="data_loaded">DATOS CARGADOS</string>
     <string name="payment_success">PAGO EXITOSO</string>
-
     <string name="ok_icon">Icono de operación exitosa</string>
+    <string name="foto_socio">Foto del socio</string>
 
 </resources>
