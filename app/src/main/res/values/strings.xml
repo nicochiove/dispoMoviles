@@ -4,6 +4,9 @@
     <string name="textView2">Bienvenido al\nCLUB VANGUARDISTA</string>
     <string name="textView5">Más que un club, una familia en movimiento</string>
 
+
+
+    <string name="btnBuscar">Buscar</string>
     <string name="logo">Logo de la institución</string>
 
     <!--Labels-->
@@ -43,6 +46,11 @@
     <string name="button_vencimientos_dia">Vencimientos del Día</string>
     <string name="button_deudores">Deudores</string>
     <string name="button_main_menu">Menú Principal</string>
+
     <string name="close">Boton para cerrar pestaña</string>
+
+    <!--Text-->
+    <string name="data_loaded">DATOS CARGADOS</string>
+
 
 </resources>
