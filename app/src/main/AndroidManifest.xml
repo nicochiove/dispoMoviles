@@ -13,6 +13,18 @@
         android:theme="@style/Theme.App_Club_Vanguardista"
         tools:targetApi="31">
         <activity
+            android:name=".Pago"
+            android:exported="false" />
+        <activity
+            android:name=".AltaExitosa"
+            android:exported="false" />
+        <activity
+            android:name=".MainMenu"
+            android:exported="false" />
+        <activity
+            android:name=".ListasMenu"
+            android:exported="false" />
+        <activity
             android:name=".SocioEncontradoActivity"
             android:exported="false" />
         <activity
