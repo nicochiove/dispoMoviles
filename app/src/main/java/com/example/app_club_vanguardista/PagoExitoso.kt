@@ -3,6 +3,7 @@ package com.example.app_club_vanguardista
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,10 +20,14 @@ class PagoExitoso : AppCompatActivity() {
             insets
         }
 
-        val btnBack = findViewById<Button>(R.id.btnOut)
+        val btnBack = findViewById<Button>(R.id.btnVolverMenuPrincipal)
         btnBack.setOnClickListener {
-            val intent = Intent(this, BuscarSocio::class.java)
+            val intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
+        }
+        val btnCerrar = findViewById<ImageButton>(R.id.btnCerrar3)
+        btnCerrar.setOnClickListener {
+            finish()
         }
     }
 }
