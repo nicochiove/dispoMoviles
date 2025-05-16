@@ -9,11 +9,8 @@
     tools:context=".MainMenu">
 
     <ImageView
+        style="@style/logo_style"
         android:id="@+id/imgHeader"
-        android:layout_width="340dp"
-        android:layout_height="207dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
         android:contentDescription="@string/logo"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"

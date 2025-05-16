@@ -60,4 +60,8 @@
 
 
 
+    <!--Text-->
+    <string name="data_loaded">DATOS CARGADOS</string>
+
+
 </resources>
