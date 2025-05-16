@@ -13,16 +13,22 @@
         android:theme="@style/Theme.App_Club_Vanguardista"
         tools:targetApi="31">
         <activity
-            android:name=".Alta_Ok"
+            android:name=".PagoExitoso"
             android:exported="false" />
         <activity
-            android:name=".Alta3"
+            android:name=".Pago"
+            android:exported="false" />
+        <activity
+            android:name=".AltaExitosa"
             android:exported="false" />
         <activity
             android:name=".MainMenu"
             android:exported="false" />
         <activity
             android:name=".ListasMenu"
+            android:exported="false" />
+        <activity
+            android:name=".SocioEncontradoActivity"
             android:exported="false" />
         <activity
             android:name=".BuscarSocio"
@@ -36,6 +42,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Alta_Ok"
+            android:exported="false" />
+        <activity
+            android:name=".Alta3"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
