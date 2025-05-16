@@ -14,15 +14,15 @@
     <string name="User">Ingrese usuario</string>
     <string name="editTextPassword">Ingrese contraseña</string>
 
+
     <string name="name_buscar">Ingrese nombre</string>
     <string name="surname_buscar">Ingrese apellido</string>
     <string name="dni_buscar">Ingrese dni</string>
     <string name="lbl_name_buscar">Nombre</string>
     <string name="lbl_surname_buscar">Apellido</string>
     <string name="lbl_dni_buscar">DNI</string>
-    
-    <string name="btnPagar">Pagar</string>
 
+    <string name="btnPagar">Pagar</string>
 
     <string name="name_pagar">Nombre</string>
     <string name="surname_pagar">Apellido</string>
@@ -31,15 +31,14 @@
     <string name="lbl_surname_pagar">Apellido</string>
     <string name="lbl_dni_pagar">DNI</string>
 
-    
-     <!--Botones-->
 
+    <!--Botones-->
     <string name="button">Iniciar sesión</string>
     <string name="desc_button_iniciar_sesion">Botón para iniciar sesión</string>
     <string name="button_alta">Alta de Socio</string>
     <string name="button_vencimientos">Listas de Vencimientos</string>
     <string name="button_pagos">Pagos</string>
-    <string name="button_salir">Salir del Sistema</string>
+    <string name="button_salir">Salir del sistema</string>
     <string name="button_volver_menu_principal">Volver al menu principal</string>
     <string name="button_vencimientos_dia">Vencimientos del Día</string>
     <string name="button_deudores">Deudores</string>
@@ -61,16 +60,13 @@
         <item>12</item>
     </string-array>
 
+
+
+
     <!--Text-->
     <string name="data_loaded">DATOS CARGADOS</string>
     <string name="payment_success">PAGO EXITOSO</string>
     <string name="ok_icon">Icono de operación exitosa</string>
     <string name="foto_socio">Foto del socio</string>
-
-    <string name="nombre_alta">Ingrese Nombre</string>
-    <string name="btnLogin2">Buscar</string>
-    <string name="apellido">Apellido</string>
-    <string name="nombre">Nombre</string>
-    <string name="dni">DNI</string>
 
 </resources>
