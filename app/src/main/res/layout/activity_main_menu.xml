@@ -9,13 +9,9 @@
     tools:context=".MainMenu">
 
     <ImageView
+        style="@style/logo_style"
         android:id="@+id/imgHeader"
-        android:layout_width="340dp"
-        android:layout_height="207dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/family_photo"
-        android:scaleType="fitCenter"
+        android:contentDescription="@string/logo"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.32"
@@ -26,7 +22,7 @@
     <Button
         android:id="@+id/btnAlta"
         android:layout_width="278dp"
-        android:layout_height="93dp"
+        android:layout_height="90dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="396dp"
@@ -44,9 +40,8 @@
     <Button
         android:id="@+id/btnVenc"
         android:layout_width="278dp"
-        android:layout_height="93dp"
+        android:layout_height="90dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="296dp"
         android:backgroundTint="#FF8000"
@@ -62,7 +57,7 @@
     <Button
         android:id="@+id/btnPagos"
         android:layout_width="278dp"
-        android:layout_height="93dp"
+        android:layout_height="90dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="192dp"
@@ -80,7 +75,7 @@
     <Button
         android:id="@+id/btnOut"
         android:layout_width="220dp"
-        android:layout_height="56dp"
+        android:layout_height="65dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
@@ -92,6 +87,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPagos"
         app:layout_constraintWidth_percent="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

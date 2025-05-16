@@ -9,24 +9,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class BuscarSocio : AppCompatActivity() {
+class SocioEncontradoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_buscar_socio)
+        setContentView(R.layout.socio_encontrado)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val btnCerrar = findViewById<ImageButton>(R.id.btnCerrar)
+        val btnPagar = findViewById<Button>(R.id.btnPagar)
+        btnPagar.setOnClickListener {
+            val intent = Intent(this, Pago::class.java)
+            startActivity(intent)
+        }
+        val btnCerrar = findViewById<ImageButton>(R.id.btnCerrarencontrado)
         btnCerrar.setOnClickListener {
             finish()
-        }
-        val btnBuscar = findViewById<Button>(R.id.btnBuscar)
-        btnBuscar.setOnClickListener {
-            val intent = Intent(this, SocioEncontradoActivity::class.java)
-            startActivity(intent)
         }
     }
 }

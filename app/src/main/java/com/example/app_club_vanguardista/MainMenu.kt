@@ -44,5 +44,6 @@ class MainMenu : AppCompatActivity() {
             val intent = Intent(this, Alta3::class.java)
             startActivity(intent)
         }
+
     }
 }

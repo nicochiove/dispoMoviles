@@ -3,7 +3,7 @@
     <string name="family_photo">Foto de una familia haciendo deporte</string>
     <string name="textView2">Bienvenido al\nCLUB VANGUARDISTA</string>
     <string name="textView5">Más que un club, una familia en movimiento</string>
-    
+
     <string name="logo">Logo de la institución</string>
 
     <!--Labels-->
@@ -13,7 +13,7 @@
 
     <string name="User">Ingrese usuario</string>
     <string name="editTextPassword">Ingrese contraseña</string>
-    
+
     <string name="name_buscar">Ingrese nombre</string>
     <string name="surname_buscar">Ingrese apellido</string>
     <string name="dni_buscar">Ingrese dni</string>
@@ -23,14 +23,17 @@
     
     <string name="btnPagar">Pagar</string>
 
+
     <string name="name_pagar">Nombre</string>
     <string name="surname_pagar">Apellido</string>
     <string name="dni_pagar">DNI</string>
     <string name="lbl_name_pagar">Nombre</string>
     <string name="lbl_surname_pagar">Apellido</string>
     <string name="lbl_dni_pagar">DNI</string>
+
     
      <!--Botones-->
+
     <string name="button">Iniciar sesión</string>
     <string name="desc_button_iniciar_sesion">Botón para iniciar sesión</string>
     <string name="button_alta">Alta de Socio</string>
@@ -45,7 +48,7 @@
     <string name="btnBuscar">Buscar</string>
     <string name="button_impr_carnet">Generar Carnet</string>
     <string name="button_buscar">Buscar</string>
-    
+
     <!--Pagina de pago-->
 
     <string-array name="metodos_pago">
@@ -58,7 +61,6 @@
         <item>12</item>
     </string-array>
 
-
     <!--Text-->
     <string name="data_loaded">DATOS CARGADOS</string>
     <string name="payment_success">PAGO EXITOSO</string>
@@ -70,4 +72,5 @@
     <string name="apellido">Apellido</string>
     <string name="nombre">Nombre</string>
     <string name="dni">DNI</string>
+
 </resources>
