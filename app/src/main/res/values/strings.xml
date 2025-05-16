@@ -44,6 +44,8 @@
     <string name="button_main_menu">Menú Principal</string>
     <string name="close">Boton para cerrar pestaña</string>
     <string name="btnBuscar">Buscar</string>
+    <string name="button_impr_carnet">Generar Carnet</string>
+    <string name="button_buscar">Buscar</string>
 
     <!--Pagina de pago-->
 
@@ -52,9 +54,9 @@
         <item>Tarjeta</item>
     </string-array>
     <string-array name="cantidad_cuotas">
-            <item>3</item>
-            <item>6</item>
-            <item>12</item>
+        <item>3</item>
+        <item>6</item>
+        <item>12</item>
     </string-array>
 
 
@@ -62,6 +64,8 @@
 
     <!--Text-->
     <string name="data_loaded">DATOS CARGADOS</string>
+    <string name="payment_success">PAGO EXITOSO</string>
 
+    <string name="ok_icon">Icono de operación exitosa</string>
 
 </resources>

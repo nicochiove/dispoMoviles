@@ -46,6 +46,13 @@ class Pago : AppCompatActivity() {
                 lblCuotas.visibility = View.GONE
             }
         }
+
+        val btnPagar = findViewById<Button>(R.id.btnPagar2)
+        btnPagar.setOnClickListener {
+            val intent = Intent(this, PagoExitoso::class.java)
+            startActivity(intent)
+        }
+
         val btnCerrar = findViewById<ImageButton>(R.id.btnCerrarpagar)
         btnCerrar.setOnClickListener {
             finish()
