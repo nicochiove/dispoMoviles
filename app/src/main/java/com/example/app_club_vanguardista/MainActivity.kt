@@ -1,6 +1,8 @@
 package com.example.app_club_vanguardista
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,5 +19,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         //Esta linea es para probar los commits y PRs, se puede eliminar dsp
+
+        val button = findViewById<Button>(R.id.btnLogin)
+        button.setOnClickListener {
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
+        }
     }
 }

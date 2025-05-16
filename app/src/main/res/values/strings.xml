@@ -12,6 +12,7 @@
 
     <string name="User">Ingrese usuario</string>
     <string name="editTextPassword">Ingrese contraseña</string>
+    <string name="nombre_alta">Ingrese Nombre</string>
 
     <string name="btnLogin2">Buscar</string>
 
@@ -33,4 +34,7 @@
     <string name="button_vencimientos_dia">Vencimientos del Día</string>
     <string name="button_deudores">Deudores</string>
     <string name="button_main_menu">Menú Principal</string>
+    <string name="apellido">Apellido</string>
+    <string name="nombre">Nombre</string>
+    <string name="dni">DNI</string>
 </resources>

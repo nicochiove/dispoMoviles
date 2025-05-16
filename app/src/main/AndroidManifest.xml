@@ -13,6 +13,12 @@
         android:theme="@style/Theme.App_Club_Vanguardista"
         tools:targetApi="31">
         <activity
+            android:name=".Alta_Ok"
+            android:exported="false" />
+        <activity
+            android:name=".Alta3"
+            android:exported="false" />
+        <activity
             android:name=".MainMenu"
             android:exported="false" />
         <activity

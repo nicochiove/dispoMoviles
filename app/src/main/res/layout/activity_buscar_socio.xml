@@ -9,7 +9,6 @@
     android:padding="16dp">
 
 
-
     <Button
         android:id="@+id/btnLogin2"
         android:layout_width="0dp"
@@ -25,13 +24,14 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUsuario4"
+        app:layout_constraintTop_toBottomOf="@+id/edDNI"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintWidth_percent="0.5" />
 
     <EditText
-        android:id="@+id/edtUsuario2"
+        android:id="@+id/edtNombre"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lblUsuario2" />
 
     <EditText
-        android:id="@+id/edtUsuario3"
+        android:id="@+id/edApellido"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lblUsuario3" />
 
     <EditText
-        android:id="@+id/edtUsuario4"
+        android:id="@+id/edDNI"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
@@ -115,7 +115,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUsuario2" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNombre" />
 
     <TextView
         android:id="@+id/lblUsuario4"
@@ -130,12 +130,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUsuario3" />
+        app:layout_constraintTop_toBottomOf="@+id/edApellido" />
 
     <ImageView
         android:id="@+id/imgHeader"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/family_photo"
         android:scaleType="centerCrop"
