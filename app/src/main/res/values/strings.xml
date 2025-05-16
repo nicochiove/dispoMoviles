@@ -5,6 +5,7 @@
     <string name="textView5">Más que un club, una familia en movimiento</string>
 
 
+
     <string name="btnBuscar">Buscar</string>
     <string name="logo">Logo de la institución</string>
 
@@ -16,8 +17,7 @@
     <string name="User">Ingrese usuario</string>
     <string name="editTextPassword">Ingrese contraseña</string>
 
-    <string name="btnLogin2">Buscar</string>
-
+    <string name="btnBuscar">Buscar</string>
 
     <string name="name_buscar">Ingrese nombre</string>
     <string name="surname_buscar">Ingrese apellido</string>
@@ -25,6 +25,15 @@
     <string name="lbl_name_buscar">Nombre</string>
     <string name="lbl_surname_buscar">Apellido</string>
     <string name="lbl_dni_buscar">DNI</string>
+
+    <string name="btnPagar">Pagar</string>
+
+    <string name="name_pagar">Ingrese nombre</string>
+    <string name="surname_pagar">Ingrese apellido</string>
+    <string name="dni_pagar">Ingrese dni</string>
+    <string name="lbl_name_pagar">Nombre</string>
+    <string name="lbl_surname_pagar">Apellido</string>
+    <string name="lbl_dni_pagar">DNI</string>
 
 
     <!--Botones-->
@@ -38,12 +47,10 @@
     <string name="button_deudores">Deudores</string>
     <string name="button_main_menu">Menú Principal</string>
 
-    <string name="btnPagar">Pagar</string>
-    <string name="name_pagar">Nombre</string>
-    <string name="surname_pagar">Apellido</string>
-    <string name="dni_pagar">DNI</string>
+    <string name="close">Boton para cerrar pestaña</string>
 
     <!--Text-->
     <string name="data_loaded">DATOS CARGADOS</string>
+
 
 </resources>
