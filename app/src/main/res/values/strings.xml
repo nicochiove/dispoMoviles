@@ -4,9 +4,6 @@
     <string name="textView2">Bienvenido al\nCLUB VANGUARDISTA</string>
     <string name="textView5">Más que un club, una familia en movimiento</string>
 
-
-
-    <string name="btnBuscar">Buscar</string>
     <string name="logo">Logo de la institución</string>
 
     <!--Labels-->
@@ -27,9 +24,9 @@
 
     <string name="btnPagar">Pagar</string>
 
-    <string name="name_pagar">Ingrese nombre</string>
-    <string name="surname_pagar">Ingrese apellido</string>
-    <string name="dni_pagar">Ingrese dni</string>
+    <string name="name_pagar">Nombre</string>
+    <string name="surname_pagar">Apellido</string>
+    <string name="dni_pagar">DNI</string>
     <string name="lbl_name_pagar">Nombre</string>
     <string name="lbl_surname_pagar">Apellido</string>
     <string name="lbl_dni_pagar">DNI</string>
@@ -45,8 +42,22 @@
     <string name="button_vencimientos_dia">Vencimientos del Día</string>
     <string name="button_deudores">Deudores</string>
     <string name="button_main_menu">Menú Principal</string>
-
     <string name="close">Boton para cerrar pestaña</string>
+
+    <!--Pagina de pago-->
+
+    <string-array name="metodos_pago">
+        <item>Efectivo</item>
+        <item>Tarjeta</item>
+    </string-array>
+    <string-array name="cantidad_cuotas">
+            <item>3</item>
+            <item>6</item>
+            <item>12</item>
+    </string-array>
+
+
+
 
     <!--Text-->
     <string name="data_loaded">DATOS CARGADOS</string>
