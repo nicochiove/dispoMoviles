@@ -43,6 +43,7 @@
     <string name="button_deudores">Deudores</string>
     <string name="button_main_menu">Menú Principal</string>
     <string name="close">Boton para cerrar pestaña</string>
+    <string name="btnBuscar">Buscar</string>
 
     <!--Pagina de pago-->
 
