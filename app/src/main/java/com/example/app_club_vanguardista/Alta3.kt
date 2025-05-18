@@ -3,6 +3,7 @@ package com.example.app_club_vanguardista
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,5 +23,11 @@ class Alta3 : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(this, Alta_Ok::class.java)
             startActivity(intent)
+        }
+        val btnCerrar = findViewById<ImageButton>(R.id.btn_cerrarX_alta)
+        btnCerrar.setOnClickListener {
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
+
         }
     }}
