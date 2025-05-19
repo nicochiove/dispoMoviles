@@ -21,7 +21,7 @@ class Alta3 : AppCompatActivity() {
         }
         val button = findViewById<Button>(R.id.btncargar)
         button.setOnClickListener {
-            val intent = Intent(this, Alta_Ok::class.java)
+            val intent = Intent(this, AltaExitosa::class.java)
             startActivity(intent)
         }
         val btnCerrar = findViewById<ImageButton>(R.id.btn_cerrarX_alta)
