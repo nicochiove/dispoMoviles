@@ -10,7 +10,6 @@
     <string name="textView7">Usuario</string>
     <string name="textView8">Contraseña</string>
     <string name="desc_button_buscar">Botón para iniciar sesión</string>
-
     <string name="User">Ingrese usuario</string>
     <string name="editTextPassword">Ingrese contraseña</string>
 
@@ -21,9 +20,7 @@
     <string name="lbl_name_buscar">Nombre</string>
     <string name="lbl_surname_buscar">Apellido</string>
     <string name="lbl_dni_buscar">DNI</string>
-
     <string name="btnPagar">Pagar</string>
-
     <string name="name_pagar">Nombre</string>
     <string name="surname_pagar">Apellido</string>
     <string name="dni_pagar">DNI</string>

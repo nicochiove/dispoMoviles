@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         btnLogin.setOnClickListener {
-            // Crear un intent para abrir MainMenu
+
             val intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
         }
