@@ -39,5 +39,11 @@ class MainMenu : AppCompatActivity() {
             val intent = Intent(this, ListasMenu::class.java)
             startActivity(intent)
         }
+        val button = findViewById<Button>(R.id.btnAlta)
+        button.setOnClickListener {
+            val intent = Intent(this, Alta3::class.java)
+            startActivity(intent)
+        }
+
     }
 }

@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/imgHeader"
-        android:layout_width="340dp"
+        android:layout_width="300dp"
         android:layout_height="207dp"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
@@ -76,5 +76,21 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.45" />
+
+    <ImageButton
+        android:id="@+id/btncerrarx5"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_margin="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/close"
+        android:src="@drawable/close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
