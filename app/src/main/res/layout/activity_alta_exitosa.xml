@@ -8,6 +8,26 @@
     android:background="@drawable/degradado_fondo"
     tools:context=".AltaExitosa">
 
+    <Button
+        android:id="@+id/btnVolverMenuPrincipal"
+        android:layout_width="278dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#FF8000"
+        android:text="@string/button_volver_menu_principal"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_percent="0.45" />
+
     <ImageView
         android:id="@+id/imgHeader"
         style="@style/logo_style"
@@ -18,23 +38,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnOut"
-        android:layout_width="220dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FF8000"
-        android:text="@string/button_salir"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.45" />
 
     <TextView
         android:id="@+id/textView"
