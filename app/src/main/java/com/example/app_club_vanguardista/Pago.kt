@@ -1,6 +1,6 @@
 package com.example.app_club_vanguardista
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -8,26 +8,22 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import androidx.core.view.isVisible
 
 class Pago : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pago)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-
         val spinnerMetodoPago = findViewById<Spinner>(R.id.spinner)
         val spinnerCuotas = findViewById<Spinner>(R.id.spinner2)
         val lblCuotas = findViewById<TextView>(R.id.lblMontodepago4)
-
+        val dni = intent.getStringExtra("dni")
 
         spinnerMetodoPago.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
@@ -49,13 +45,26 @@ class Pago : AppCompatActivity() {
 
         val btnPagar = findViewById<Button>(R.id.btnPagar2)
         btnPagar.setOnClickListener {
-            val intent = Intent(this, PagoExitoso::class.java)
-            startActivity(intent)
-        }
+            if (dni == null) {
+                Toast.makeText(this, "Error: DNI no encontrado", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
+            val fechaActual = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+            val metodoPago = spinnerMetodoPago.selectedItem.toString()
+            val cuotas = if (spinnerCuotas.isVisible) {
+                spinnerCuotas.selectedItem.toString()
+            } else {
+                null
+            }
+
+
+
+
+    }
         val btnCerrar = findViewById<ImageButton>(R.id.btnCerrarpagar)
         btnCerrar.setOnClickListener {
             finish()
         }
-    }
+}
 }

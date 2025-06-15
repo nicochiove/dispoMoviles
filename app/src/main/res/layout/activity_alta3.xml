@@ -126,7 +126,7 @@
         android:autofillHints="creditCardNumber"
         android:background="@drawable/edittext_rounded"
         android:ems="10"
-        android:hint="dd/MM/yyyy"
+        android:hint="yyyy/MM/dd"
         android:inputType="date"
         android:padding="10dp"
         android:textColor="#000000"
