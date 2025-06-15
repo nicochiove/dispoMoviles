@@ -92,20 +92,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
         }
     }
 
-    // Verificar si ya pagó en el mes (formato mesAnio = "yyyy-MM")
-    fun yaPagoEsteMes(dni: String, mesAnio: String): Boolean {
-        val db = readableDatabase
-        val query = "SELECT COUNT(*) FROM pagos WHERE dni = ? AND substr(fechaPago, 1, 7) = ?"
-        val cursor = db.rawQuery(query, arrayOf(dni, mesAnio))
-        var pagado = false
-        if (cursor.moveToFirst()) {
-            val count = cursor.getInt(0)
-            pagado = count > 0
-        }
-        cursor.close()
-        db.close()
-        return pagado
-    }
+
 
     // Data class Socio
     data class Socio(
