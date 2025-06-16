@@ -2,6 +2,7 @@ package com.example.app_club_vanguardista
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import java.io.Serializable
@@ -18,16 +19,20 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
         """.trimIndent())
 
         db.execSQL("""
+           
             CREATE TABLE socios(
+               
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nombre TEXT UNIQUE NOT NULL,
                 apellido TEXT NOT NULL,
-                dni TEXT NOT NULL,
-                tipoCliente TEXT NOT NULL,
-                fechaAlta TEXT NOT NULL,
+                dni TEXT NOT NULL UNIQUE, -- Hacemos el DNI ÃšNICO, es mÃ¡s comÃºn
+                tipoCliente TEXT CHECK(tipoCliente IN ('Mensual', 'Diario')) NOT NULL, -- RESTRICCIÃ“N AQUÃ
+                fechaAlta DATE NOT NULL, -- Usamos DATE para mejor manejo de fechas
                 aptoFisico INTEGER NOT NULL,
                 foto BLOB
             )
+
+            
         """.trimIndent())
 
         db.execSQL("""
@@ -39,6 +44,30 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
         """.trimIndent())
 
         db.execSQL("INSERT INTO usuarios(usuario, contrasenia) VALUES ('admin', '1234')")
+        /// DENTRO DE TU UserDBHelper.kt, en el método onCreate(db: SQLiteDatabase)
+
+// Insertar datos de ejemplo para socios (SIN TILDES)
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Ana', 'Perez', '30123456', 'Mensual', '2023-01-15', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Luis', 'Garcia', '32789012', 'Diario', '2022-11-20', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Carla', 'Martinez', '35456789', 'Mensual', '2023-03-10', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Jorge', 'Rodriguez', '28098765', 'Diario', '2021-07-01', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Sofia', 'Lopez', '38123123', 'Mensual', '2023-05-25', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Miguel', 'Sanchez', '31567890', 'Diario', '2022-09-05', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Elena', 'Fernandez', '36789456', 'Mensual', '2020-02-18', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Diego', 'Gomez', '29321654', 'Diario', '2023-08-30', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Laura', 'Diaz', '40159753', 'Mensual', '2023-06-12', 1, NULL);")
+        db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Pablo', 'Ruiz', '33654987', 'Diario', '2022-12-01', 1, NULL);")
+
+// Insertar datos de ejemplo para pagos
+
+        db.execSQL("INSERT INTO pagos (idSocio, fechaPago) VALUES (1, '2025-04-16');") // Ana Perez
+        db.execSQL("INSERT INTO pagos (idSocio, fechaPago) VALUES (2, '2025-04-20');") // Luis Garcia
+        db.execSQL("INSERT INTO pagos (idSocio, fechaPago) VALUES (3, '2025-05-01');") // Carla Martinez
+        db.execSQL("INSERT INTO pagos (idSocio, fechaPago) VALUES (4, '2025-05-25');") // Jorge Rodriguez
+        db.execSQL("INSERT INTO pagos (idSocio, fechaPago) VALUES (5, '2025-06-01');") // Sofia Lopez
+        db.execSQL("INSERT INTO pagos (idSocio, fechaPago) VALUES (6, '2025-06-10');") // Miguel Sanchez
+        db.execSQL("INSERT INTO pagos (idSocio, fechaPago) VALUES (7, '2025-04-30');") // Elena Fernandez
+        db.execSQL("INSERT INTO pagos (idSocio, fechaPago) VALUES (8, '2025-05-10');") // Diego Gomez
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -61,8 +90,22 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
         return correctUser
     }
 
+
+
+    data class Socio(
+        val id: Int, //
+        val nombre: String,
+        val apellido: String,
+        val dni: String,
+        val tipoCliente: String,
+        val fechaAlta: String,
+        val aptoFisico: Boolean,
+        val foto: ByteArray?
+    ) : Serializable
+
     // Insertar socio
     fun insertarSocio(
+
         nombre: String,
         apellido: String,
         dni: String,
@@ -95,7 +138,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
 
 
     // Data class Socio
-    data class Socio(
+    data class Socios(
         val nombre: String,
         val apellido: String,
         val dni: String,
@@ -106,7 +149,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
     ) : Serializable
 
     // Función auxiliar para extraer un socio de un cursor
-    private fun extraerSocioDeCursor(cursor: android.database.Cursor): Socio {
+    private fun extraerSocioDeCursor(cursor: Cursor): Socio {
         return Socio(
             nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
             apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
@@ -114,7 +157,8 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
             tipoCliente = cursor.getString(cursor.getColumnIndexOrThrow("tipoCliente")),
             fechaAlta = cursor.getString(cursor.getColumnIndexOrThrow("fechaAlta")),
             aptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1,
-            foto = cursor.getBlob(cursor.getColumnIndexOrThrow("foto"))
+            foto = cursor.getBlob(cursor.getColumnIndexOrThrow("foto")),
+            id = TODO()
         )
     }
 
