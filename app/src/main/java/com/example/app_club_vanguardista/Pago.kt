@@ -1,10 +1,12 @@
 package com.example.app_club_vanguardista
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
@@ -14,16 +16,21 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import androidx.core.view.isVisible
-
+private lateinit var dbHelper: UserDBHelper
 class Pago : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pago)
-
         val spinnerMetodoPago = findViewById<Spinner>(R.id.spinner)
         val spinnerCuotas = findViewById<Spinner>(R.id.spinner2)
         val lblCuotas = findViewById<TextView>(R.id.lblMontodepago4)
         val dni = intent.getStringExtra("dni")
+        val monto=findViewById<EditText>(R.id.edtUsuario5)
+        monto.setText("50000")
+
+        dbHelper = UserDBHelper(this)
+
+
 
         spinnerMetodoPago.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
@@ -57,8 +64,19 @@ class Pago : AppCompatActivity() {
             } else {
                 null
             }
+            val okintent: Intent
 
-
+            val exitoInsercion = dbHelper.insertarPago(dni, fechaActual)
+            if (exitoInsercion) {
+                Toast.makeText(this, "Pago registrado exitosamente para DNI: $dni", Toast.LENGTH_LONG).show()
+                // Aquí podrías, por ejemplo, finalizar esta actividad o limpiar campos
+                // finish()
+                okintent = Intent(this, PagoExitoso::class.java)
+                startActivity(okintent)
+            } else {
+                Toast.makeText(this, "Error al registrar el pago. Verifique Logcat.", Toast.LENGTH_LONG).show()
+                // Revisa Logcat para ver si e.printStackTrace() en UserDBHelper imprimió algo.
+            }
 
 
     }

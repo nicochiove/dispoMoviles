@@ -1,4 +1,3 @@
-
 package com.example.app_club_vanguardista
 
 import android.content.Intent
@@ -30,15 +29,16 @@ class BuscarSocio : AppCompatActivity() {
             val apellido = edtApellido.text.toString().trim()
             val dni = edtDni.text.toString().trim()
 
-            if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty()) {
+            if (dni.isEmpty()) {
                 Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val socio = dbHelper.buscarSocio(nombre, apellido, dni)
+            val socio = dbHelper.buscarSocio(dni)
 
             if (socio != null) {
                 val intent = Intent(this, SocioEncontradoActivity::class.java).apply {
+
                     putExtra("nombre", socio.nombre)
                     putExtra("apellido", socio.apellido)
                     putExtra("dni", socio.dni)

@@ -123,7 +123,7 @@ class Alta3 : AppCompatActivity() {
                 val formatoDB = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                 fechaAltaString = formatoDB.format(calendarioFechaAltaSeleccionada!!.time)
             } else {
-                // Si el usuario no seleccionÃ³ una fecha usando el diÃ¡logo
+
                 Toast.makeText(this, "Por favor selecciona la fecha de alta.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }

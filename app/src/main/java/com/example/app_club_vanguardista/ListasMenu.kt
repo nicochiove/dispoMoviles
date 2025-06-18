@@ -27,6 +27,9 @@ class ListasMenu : AppCompatActivity() {
         val btnCerrar = findViewById<ImageButton>(R.id.btncerrarx5)
 
 
+        // Asumiendo que R.id.btnPagos es el ID correcto
+
+
 
         btnBack.setOnClickListener {
             val intent = Intent(this, MainMenu::class.java)
