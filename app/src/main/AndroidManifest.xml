@@ -13,6 +13,16 @@
         android:theme="@style/Theme.App_Club_Vanguardista"
         tools:targetApi="31">
         <activity
+            android:name=".Pago2"
+            android:exported="false"
+            android:theme="@style/Theme.App_Club_Vanguardista" />
+        <activity
+            android:name=".Deudores"
+            android:exported="false" />
+        <activity
+            android:name=".DeudoresHoy"
+            android:exported="false" />
+        <activity
             android:name=".PagoExitoso"
             android:exported="false" />
         <activity
@@ -42,7 +52,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Alta3"
             android:exported="false" />
