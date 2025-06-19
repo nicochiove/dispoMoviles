@@ -266,11 +266,12 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
 
             val db = readableDatabase
             val query = """SELECT s.* FROM socios s
-                            JOIN (
+                             LEFT JOIN (
                                 SELECT dni, MAX(fechaPago) AS ultimaFecha
                                 FROM pagos
                                 GROUP BY dni
                             ) p ON s.dni = p.dni
+                            WHERE s.tipoCliente != 'Diario'
                         """.trimIndent()
 
             val cursor = db.rawQuery(query, null)
@@ -341,11 +342,12 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
         val query = """
                     SELECT s.*
                     FROM socios s
-                    JOIN (
+                    LEFT JOIN (
                         SELECT dni, MAX(fechaPago) AS ultimaFecha
                         FROM pagos
                         GROUP BY dni
                     ) p ON s.dni = p.dni
+                    WHERE s.tipoCliente != 'Diario'
                 """.trimIndent()
 
             val cursor = db.rawQuery(query, null)
@@ -394,6 +396,18 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
+                    }else{
+                        val socio = Socio(
+                            id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                            nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                            apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                            dni = dni,
+                            tipoCliente = cursor.getString(cursor.getColumnIndexOrThrow("tipoCliente")),
+                            fechaAlta = cursor.getString(cursor.getColumnIndexOrThrow("fechaAlta")),
+                            aptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1,
+                            foto = cursor.getBlobOrNull(cursor.getColumnIndexOrThrow("foto"))
+                        )
+                        sociosVencidos.add(socio)
                     }
 
                 } while (cursor.moveToNext())
