@@ -11,7 +11,7 @@ import androidx.core.database.getBlobOrNull
 import java.io.Serializable
 import kotlin.math.log
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB", null, 3) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB", null, 4) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(
@@ -77,13 +77,13 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
         db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Pablo', 'Ruiz', '33654987', 'Diario', '2022-12-01', 1, NULL);")
 
 // Insertar datos de ejemplo para pagos
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (2, '2025-04-20');") // Luis Garcia
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (3, '2025-05-01');") // Carla Martinez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (4, '2025-05-19');") // Jorge Rodriguez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (5, '2025-06-01');") // Sofia Lopez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (6, '2025-06-10');") // Miguel Sanchez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (7, '2025-04-30');") // Elena Fernandez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (8, '2025-05-19');") // Diego Gomez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('32789012', '2025-04-20');") // Luis Garcia
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('35456789', '2025-05-01');") // Carla Martinez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('28098765', '2025-05-19');") // Jorge Rodriguez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('38123123', '2025-06-01');") // Sofia Lopez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('31567890', '2025-06-10');") // Miguel Sanchez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('36789456', '2025-04-30');") // Elena Fernandez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('29321654', '2025-05-19');") // Diego Gomez
 
 
 
@@ -270,7 +270,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
                                 SELECT dni, MAX(fechaPago) AS ultimaFecha
                                 FROM pagos
                                 GROUP BY dni
-                            ) p ON s.id = p.dni
+                            ) p ON s.dni = p.dni
                         """.trimIndent()
 
             val cursor = db.rawQuery(query, null)
@@ -281,7 +281,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
 
             if (cursor.moveToFirst()) {
                 do {
-                    val dni = cursor.getString(cursor.getColumnIndexOrThrow("id"))
+                    val dni = cursor.getString(cursor.getColumnIndexOrThrow("dni"))
                     val ultimaFechaStr = cursor.getString(cursor.getColumnIndexOrThrow("fechaAlta")) // placeholder
 
                     // Buscamos la fecha de pago desde una subconsulta separada por dni
@@ -345,7 +345,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
                         SELECT dni, MAX(fechaPago) AS ultimaFecha
                         FROM pagos
                         GROUP BY dni
-                    ) p ON s.id = p.dni
+                    ) p ON s.dni = p.dni
                 """.trimIndent()
 
             val cursor = db.rawQuery(query, null)
@@ -356,7 +356,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
 
             if (cursor.moveToFirst()) {
                 do {
-                    val dni = cursor.getString(cursor.getColumnIndexOrThrow("id"))
+                    val dni = cursor.getString(cursor.getColumnIndexOrThrow("dni"))
 
                     // Buscar la última fecha de pago
                     val subCursor = db.rawQuery(
