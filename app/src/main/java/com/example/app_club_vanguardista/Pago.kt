@@ -65,13 +65,15 @@ class Pago : AppCompatActivity() {
                 null
             }
             val okintent: Intent
-
+            val edni = intent.getStringExtra("dni")
             val exitoInsercion = dbHelper.insertarPago(dni, fechaActual)
             if (exitoInsercion) {
                 Toast.makeText(this, "Pago registrado exitosamente para DNI: $dni", Toast.LENGTH_LONG).show()
                 // Aquí podrías, por ejemplo, finalizar esta actividad o limpiar campos
                 // finish()
+
                 okintent = Intent(this, PagoExitoso::class.java)
+                okintent.putExtra("dni_pagado", edni)
                 startActivity(okintent)
             } else {
                 Toast.makeText(this, "Error al registrar el pago. Verifique Logcat.", Toast.LENGTH_LONG).show()
