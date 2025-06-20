@@ -5,9 +5,13 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.icu.util.Calendar
+import android.util.Log
+import androidx.core.database.getBlobOrNull
 import java.io.Serializable
+import kotlin.math.log
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB", null, 3) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB", null, 4) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(
@@ -73,13 +77,13 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
         db.execSQL("INSERT INTO socios (nombre, apellido, dni, tipoCliente, fechaAlta, aptoFisico, foto) VALUES ('Pablo', 'Ruiz', '33654987', 'Diario', '2022-12-01', 1, NULL);")
 
 // Insertar datos de ejemplo para pagos
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (2, '2025-04-20');") // Luis Garcia
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (3, '2025-05-01');") // Carla Martinez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (4, '2025-05-25');") // Jorge Rodriguez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (5, '2025-06-01');") // Sofia Lopez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (6, '2025-06-10');") // Miguel Sanchez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (7, '2025-04-30');") // Elena Fernandez
-        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES (8, '2025-05-10');") // Diego Gomez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('32789012', '2025-04-20');") // Luis Garcia
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('35456789', '2025-05-01');") // Carla Martinez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('28098765', '2025-05-19');") // Jorge Rodriguez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('38123123', '2025-06-01');") // Sofia Lopez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('31567890', '2025-06-10');") // Miguel Sanchez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('36789456', '2025-04-30');") // Elena Fernandez
+        db.execSQL("INSERT INTO pagos (dni, fechaPago) VALUES ('29321654', '2025-05-19');") // Diego Gomez
 
 
 
@@ -210,9 +214,6 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
             db.close()
         }
 
-
-
-
     }
     data class DeporteConTarifa(val nombre: String, val tarifa: Int)
 
@@ -259,5 +260,166 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB
         }
         return tarifa
     }
+
+    fun getVencimientosDelDia(): List<Socio> {
+            val sociosVencHoy = mutableListOf<Socio>()
+
+            val db = readableDatabase
+            val query = """SELECT s.* FROM socios s
+                             LEFT JOIN (
+                                SELECT dni, MAX(fechaPago) AS ultimaFecha
+                                FROM pagos
+                                GROUP BY dni
+                            ) p ON s.dni = p.dni
+                            WHERE s.tipoCliente != 'Diario'
+                        """.trimIndent()
+
+            val cursor = db.rawQuery(query, null)
+
+            val dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+            val calendar = java.util.Calendar.getInstance()
+            val hoy = dateFormat.format(java.util.Date())
+
+            if (cursor.moveToFirst()) {
+                do {
+                    val dni = cursor.getString(cursor.getColumnIndexOrThrow("dni"))
+                    val ultimaFechaStr = cursor.getString(cursor.getColumnIndexOrThrow("fechaAlta")) // placeholder
+
+                    // Buscamos la fecha de pago desde una subconsulta separada por dni
+                    val subCursor = db.rawQuery(
+                        "SELECT MAX(fechaPago) FROM pagos WHERE dni = ?",
+                        arrayOf(dni)
+                    )
+
+                    var fechaPago: String? = null
+                    if (subCursor.moveToFirst()) {
+                        fechaPago = subCursor.getString(0)
+                    }
+                    subCursor.close()
+
+                    if (fechaPago != null) {
+                        try {
+                            val fecha = dateFormat.parse(fechaPago)
+                            calendar.time = fecha
+                            calendar.add(Calendar.MONTH, 1)
+                            val vencimiento = dateFormat.format(calendar.time)
+
+                            Log.d("Fechas::", vencimiento.toString() + " and " + hoy.toString())
+
+                            if (vencimiento == hoy) {
+                                // Mapear los campos del socio
+                                val socio = Socio(
+                                    id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                                    nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                                    apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                                    dni = dni,
+                                    tipoCliente = cursor.getString(cursor.getColumnIndexOrThrow("tipoCliente")),
+                                    fechaAlta = cursor.getString(cursor.getColumnIndexOrThrow("fechaAlta")),
+                                    aptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1,
+                                    foto = cursor.getBlobOrNull(cursor.getColumnIndexOrThrow("foto"))
+                                )
+                                sociosVencHoy.add(socio)
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            Log.d("DEBUG:: Error", e.message.toString())
+                        }
+                    }
+
+                } while (cursor.moveToNext())
+            }
+
+            cursor.close()
+            db.close()
+
+            return sociosVencHoy
+    }
+
+    fun getListaDeudores(): List<Socio>{
+        val sociosVencidos = mutableListOf<Socio>()
+
+        val db = readableDatabase
+        val query = """
+                    SELECT s.*
+                    FROM socios s
+                    LEFT JOIN (
+                        SELECT dni, MAX(fechaPago) AS ultimaFecha
+                        FROM pagos
+                        GROUP BY dni
+                    ) p ON s.dni = p.dni
+                    WHERE s.tipoCliente != 'Diario'
+                """.trimIndent()
+
+            val cursor = db.rawQuery(query, null)
+
+            val dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+            val calendar = java.util.Calendar.getInstance()
+            val hoy = dateFormat.parse(dateFormat.format(java.util.Date()))!!
+
+            if (cursor.moveToFirst()) {
+                do {
+                    val dni = cursor.getString(cursor.getColumnIndexOrThrow("dni"))
+
+                    // Buscar la última fecha de pago
+                    val subCursor = db.rawQuery(
+                        "SELECT MAX(fechaPago) FROM pagos WHERE dni = ?",
+                        arrayOf(dni)
+                    )
+
+                    var fechaPago: String? = null
+                    if (subCursor.moveToFirst()) {
+                        fechaPago = subCursor.getString(0)
+                    }
+                    subCursor.close()
+
+                    if (fechaPago != null) {
+                        try {
+                            val fecha = dateFormat.parse(fechaPago)
+                            calendar.time = fecha
+                            calendar.add(Calendar.MONTH, 1)
+                            val vencimiento = calendar.time
+
+                            if (vencimiento.before(hoy)) {
+                                // Mapear socio vencido
+                                val socio = Socio(
+                                    id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                                    nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                                    apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                                    dni = dni,
+                                    tipoCliente = cursor.getString(cursor.getColumnIndexOrThrow("tipoCliente")),
+                                    fechaAlta = cursor.getString(cursor.getColumnIndexOrThrow("fechaAlta")),
+                                    aptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1,
+                                    foto = cursor.getBlobOrNull(cursor.getColumnIndexOrThrow("foto"))
+                                )
+                                sociosVencidos.add(socio)
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }else{
+                        val socio = Socio(
+                            id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                            nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                            apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                            dni = dni,
+                            tipoCliente = cursor.getString(cursor.getColumnIndexOrThrow("tipoCliente")),
+                            fechaAlta = cursor.getString(cursor.getColumnIndexOrThrow("fechaAlta")),
+                            aptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1,
+                            foto = cursor.getBlobOrNull(cursor.getColumnIndexOrThrow("foto"))
+                        )
+                        sociosVencidos.add(socio)
+                    }
+
+                } while (cursor.moveToNext())
+            }
+
+            cursor.close()
+            db.close()
+
+            return sociosVencidos
+        }
+
+    companion object
+
 }
 
