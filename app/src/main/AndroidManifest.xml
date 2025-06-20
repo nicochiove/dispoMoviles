@@ -29,15 +29,15 @@
         </provider>
 
         <activity
+            android:name=".SocioAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".Listas"
+            android:exported="false" />
+        <activity
             android:name=".Pago2"
             android:exported="false"
             android:theme="@style/Theme.App_Club_Vanguardista" />
-        <activity
-            android:name=".Deudores"
-            android:exported="false" />
-        <activity
-            android:name=".DeudoresHoy"
-            android:exported="false" />
         <activity
             android:name=".PagoExitoso"
             android:exported="false" />

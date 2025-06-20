@@ -74,8 +74,11 @@ class Pago2 : AppCompatActivity() {
         spinnerDeportes.adapter = adapter
         val btnPagar = findViewById<Button>(R.id.btnPagar3)
         var okintent2: Intent
+        val edni = intent.getStringExtra("dni")
         btnPagar.setOnClickListener {
             okintent2 = Intent(this, PagoExitoso::class.java)
+            okintent2.putExtra("dni_pagado", edni)
+
             startActivity(okintent2)
         }
 
