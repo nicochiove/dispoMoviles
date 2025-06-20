@@ -1,0 +1,100 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="350dp"
+    android:layout_height="300dp"
+    android:background="@color/white"
+    android:padding="12dp"
+    tools:context=".MainActivity">
+
+    <!-- Contenido del ConstraintLayout -->
+
+    <!-- Logo y Nombre del Club -->
+    <ImageView
+        android:id="@+id/imgLogoClubCarnet"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="Logo del Club"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<TextView
+android:id="@+id/tvNombreClubCarnet"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:text="CLUB DEPORTIVO VANGUARDISTA"
+android:textSize="14sp"
+android:textStyle="bold"
+android:textColor="@android:color/black"
+android:gravity="center_horizontal"
+app:layout_constraintTop_toTopOf="@id/imgLogoClubCarnet"
+app:layout_constraintStart_toEndOf="@id/imgLogoClubCarnet"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintBottom_toBottomOf="@id/imgLogoClubCarnet"
+android:layout_marginStart="8dp"/>
+
+    <!-- Foto del Socio -->
+    <ImageView
+        android:id="@+id/imgFotoSocioEnCarnet"
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Foto del Socio"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgLogoClubCarnet" />
+
+    <!-- Datos del Socio -->
+<TextView
+android:id="@+id/tvNombreSocioEnCarnet"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:text="Nombre: Nombre Apellido"
+android:textColor="@android:color/black"
+android:textSize="12sp"
+app:layout_constraintTop_toTopOf="@id/imgFotoSocioEnCarnet"
+app:layout_constraintStart_toEndOf="@id/imgFotoSocioEnCarnet"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginStart="12dp"/>
+
+<TextView
+android:id="@+id/tvDniSocioEnCarnet"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:text="DNI: 12.345.678"
+android:textColor="@android:color/black"
+android:textSize="12sp"
+app:layout_constraintTop_toBottomOf="@id/tvNombreSocioEnCarnet"
+app:layout_constraintStart_toStartOf="@id/tvNombreSocioEnCarnet"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginTop="3dp"/>
+
+<TextView
+android:id="@+id/tvTipoSocioEnCarnet"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:text="Tipo: Mensual"
+android:textColor="@android:color/black"
+android:textSize="12sp"
+app:layout_constraintTop_toBottomOf="@id/tvDniSocioEnCarnet"
+app:layout_constraintStart_toStartOf="@id/tvDniSocioEnCarnet"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginTop="3dp"/>
+
+<TextView
+android:id="@+id/tvVencimientoSocioEnCarnet"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:text="Vence: 31/12/2024"
+android:textColor="@android:color/black"
+android:textSize="12sp"
+app:layout_constraintTop_toBottomOf="@id/tvTipoSocioEnCarnet"
+app:layout_constraintStart_toStartOf="@id/tvTipoSocioEnCarnet"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginTop="3dp"/>
+
+    /
+</androidx.constraintlayout.widget.ConstraintLayout>

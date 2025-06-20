@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-files-path name="my_documents" path="Documents/" />
+    <!-- También podrías necesitar acceso a 'cache' si guardas PDFs temporalmente allí
+    <cache-path name="shared_cache" path="." />
+    -->
+</paths>
