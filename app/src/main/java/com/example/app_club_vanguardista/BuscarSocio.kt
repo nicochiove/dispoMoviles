@@ -19,14 +19,12 @@ class BuscarSocio : AppCompatActivity() {
         dbHelper = UserDBHelper(this)
 
         val btnBuscar = findViewById<Button>(R.id.btnBuscar)
-        val edtNombre = findViewById<EditText>(R.id.edtUsuario2)
-        val edtApellido = findViewById<EditText>(R.id.edtUsuario3)
+
         val edtDni = findViewById<EditText>(R.id.edtUsuario4)
         val btnCerrar = findViewById<ImageButton>(R.id.btnCerrar)
 
         btnBuscar.setOnClickListener {
-            val nombre = edtNombre.text.toString().trim()
-            val apellido = edtApellido.text.toString().trim()
+
             val dni = edtDni.text.toString().trim()
 
             if (dni.isEmpty()) {

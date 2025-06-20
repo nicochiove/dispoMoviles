@@ -1,7 +1,10 @@
 package com.example.app_club_vanguardista
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,7 +18,11 @@ class Listas : AppCompatActivity() {
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_listas)
-
+        val btnOut = findViewById<ImageButton>(R.id.btnCerrarListax7)
+        btnOut.setOnClickListener {
+            val intent = Intent(this,ListasMenu::class.java)
+            startActivity(intent)
+            finish()}
         val LIST_TO_SHOW = "LIST_TO_SHOW"
         val listToShow = intent.getStringExtra(LIST_TO_SHOW)
         var socios = listOf<UserDBHelper.Socio>()
@@ -37,6 +44,8 @@ class Listas : AppCompatActivity() {
         }
 
         recyclerView.adapter = SocioAdapter(socios)
+
+
 
     }
 }

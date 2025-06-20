@@ -11,7 +11,7 @@ import androidx.core.database.getBlobOrNull
 import java.io.Serializable
 import kotlin.math.log
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB", null, 4) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "ClubDepotivoDB", null, 5) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(

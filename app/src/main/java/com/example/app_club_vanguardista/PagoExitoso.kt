@@ -76,17 +76,29 @@ class PagoExitoso : AppCompatActivity() {
 
                 if (socio != null) {
                     val calendario = Calendar.getInstance() // Obtiene la fecha y hora actual
-                    calendario.add(Calendar.DAY_OF_YEAR, 30) // Añade 30 días
-                    val formatoFecha = SimpleDateFormat("dd/MM/yyyy",Locale.getDefault()) // Define el formato deseado
-                    val fechaVencimientoCalculada = formatoFecha.format(calendario.time)
+                    val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val fechaVencimientoCalculada: String
+
+                    // --- INICIO DE LA MODIFICACIÓN ---
+                    if (socio.tipoCliente.equals("Diario", ignoreCase = true)) {
+                        // Si es "Diario", la fecha de vencimiento es la fecha actual
+                        fechaVencimientoCalculada = formatoFecha.format(calendario.time)
+                        Toast.makeText(this, "Tipo Socio: Diario. Vencimiento: Hoy", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Para "Mensual" u otros, añade 30 días (o la lógica que tenías)
+                        calendario.add(Calendar.DAY_OF_YEAR, 30)
+                        fechaVencimientoCalculada = formatoFecha.format(calendario.time)
+                        Toast.makeText(this, "Tipo Socio: ${socio.tipoCliente}. Vencimiento en 30 días.", Toast.LENGTH_SHORT).show()
+                    }
+                    // --- FIN DE LA MODIFICACIÓN ---
+
                     val datosCarnet = DatosSocioParaCarnet(
                         nombreCompleto = "${socio.nombre} ${socio.apellido}",
                         dni = socio.dni,
-                        tipoSocio = socio.tipoCliente, // Asume que Socio tiene 'tipoSocio'
-                        fechaVencimiento = fechaVencimientoCalculada, // ¡IMPORTANTE! Asume que Socio tiene 'fechaVencimiento'
-                        fotoBytes = socio.foto // Asume que Socio tiene 'foto' como ByteArray?
+                        tipoSocio = socio.tipoCliente, // Asegúrate que tu objeto Socio tenga esta propiedad
+                        fechaVencimiento = fechaVencimientoCalculada,
+                        fotoBytes = socio.foto
                     )
-
                     // 3. Llamar a generarBitmapCarnet()
                     val bitmap = generarBitmapCarnet(this, datosCarnet)
 
